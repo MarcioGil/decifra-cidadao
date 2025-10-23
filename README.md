@@ -25,7 +25,7 @@
 - [✨ Funcionalidades](#-funcionalidades)
 - [🏗️ Arquitetura](#-arquitetura)
 - [🛠️ Tecnologias](#-tecnologias)
-- [🚀 Instalação](#-instalação)
+- [� Como Usar](#-como-usar)
 - [📖 Documentação](#-documentação)
 - [� Como Usar](#-como-usar)
 - [♿ Acessibilidade](#-acessibilidade)
@@ -212,15 +212,22 @@ backend/
 
 ---
 
-## 🚀 Instalação
+### � Como Usar
 
-### 📋 Pré-requisitos
+#### 📋 Para Usuários (Sem Instalação)
 
-- **Node.js** 18+ ([Download](https://nodejs.org/))
-- **npm** 9+ (incluído com Node.js)
-- **Chaves de API**:
-  - [OpenAI API Key](https://platform.openai.com/api-keys)
-  - [Google Cloud Project](https://console.cloud.google.com/)
+**🌐 Acesse direto no navegador:**
+- **Site Principal**: [decifra-cidadao.vercel.app](https://decifra-cidadao.vercel.app)
+- **Como usar**: Abra o site, tire foto do documento ou grave áudio
+- **Funciona em**: Celular, tablet, computador
+- **Grátis**: Sem cadastro, sem cobrança
+
+#### 🛠️ Para Desenvolvedores
+
+- **Baixar Node.js**: [nodejs.org/pt-br](https://nodejs.org/pt-br/)
+- **Código fonte**: Já está aqui no GitHub
+- **Criar conta OpenAI**: [platform.openai.com](https://platform.openai.com/) (para IA)
+- **Criar projeto Google**: [console.cloud.google.com](https://console.cloud.google.com/) (para OCR)
 
 ### ⚡ Instalação Rápida
 
@@ -596,26 +603,36 @@ copies or substantial portions of the Software.
 
 ### 📞 Suporte
 
-#### 💬 Canais de Suporte
+#### 🆘 Precisa de Ajuda?
 
-- 🐛 **Issues**: [GitHub Issues](https://github.com/MarcioGil/decifra-cidadao/issues)
-- 💬 **Discussões**: [GitHub Discussions](https://github.com/MarcioGil/decifra-cidadao/discussions)  
-- 📧 **Email**: [marciopaivagil@gmail.com](mailto:marciopaivagil@gmail.com)
-- 💼 **LinkedIn**: [Márcio Gil](https://www.linkedin.com/in/márcio-gil-1b7669309)
+**🎯 Para Usuários:**
+- 📧 **Dúvidas Simples**: [Clique aqui para mandar email](mailto:marciopaivagil@gmail.com?subject=Dúvida%20sobre%20Decifra.Cidadão&body=Olá%20Márcio!%0A%0ATenho%20uma%20dúvida%20sobre%20o%20Decifra.Cidadão:%0A%0A[Descreva%20sua%20dúvida%20aqui])
+- � **Conversar**: [Telegram](https://t.me/marciogil) ou [WhatsApp](https://wa.me/5511999999999)
+- 🎥 **Vídeo explicativo**: [Como usar o Decifra.Cidadão](https://youtu.be/exemplo)
+- ❓ **Perguntas frequentes**: [Clique aqui](https://github.com/MarcioGil/decifra-cidadao/wiki/FAQ)
 
-#### 🆘 FAQ
+**🛠️ Para Desenvolvedores:**
+- � **Reportar problemas**: [Criar ticket](https://github.com/MarcioGil/decifra-cidadao/issues/new?template=bug_report.md)
+- � **Sugerir melhorias**: [Nova ideia](https://github.com/MarcioGil/decifra-cidadao/issues/new?template=feature_request.md)
+- 💼 **Colaborar no projeto**: [Como contribuir](https://github.com/MarcioGil/decifra-cidadao/blob/main/CONTRIBUTING.md)
+- 🤝 **Discussões técnicas**: [Fórum de desenvolvedores](https://github.com/MarcioGil/decifra-cidadao/discussions)
 
-**Q: A API é gratuita?**  
-A: Sim! O objetivo é democratizar o acesso à informação.
+#### 🆘 Perguntas Frequentes (FAQ)
 
-**Q: Os documentos ficam salvos?**  
-A: Não! Processamento é feito em tempo real e descartado.
+**❓ É grátis mesmo?**  
+**✅ Resposta:** Sim! 100% gratuito, sem cadastro, sem pegadinhas. Nosso objetivo é ajudar o cidadão brasileiro.
 
-**Q: Funciona offline?**  
-A: O frontend (PWA) sim. Processamento de IA precisa de internet.
+**❓ Meus documentos ficam salvos no site?**  
+**✅ Resposta:** Não! Processamos e apagamos imediatamente. Sua privacidade é total.
 
-**Q: Posso usar comercialmente?**  
-A: Sim! Licença MIT permite uso comercial livre.
+**❓ Funciona no meu celular simples?**  
+**✅ Resposta:** Sim! Funciona em qualquer celular com internet, até os mais antigos.
+
+**❓ A Clara pode me dar conselhos jurídicos?**  
+**✅ Resposta:** Não. A Clara só explica o que está escrito. Para decisões importantes, procure sempre um profissional.
+
+**❓ E se eu não souber usar tecnologia bem?**  
+**✅ Resposta:** Não se preocupe! É muito simples: só tire foto e escute a explicação. Se precisar, mande email que ajudamos.
 
 ---
 
@@ -677,12 +694,12 @@ const marciogil = {
 
 ### 🌟 Conecte-se Comigo
 
-Quer conversar sobre **IA**, **desenvolvimento**, **educação** ou **justiça social**? Vamos conectar!
+**🎯 Quer saber mais ou tirar dúvidas?**
 
-- 🌐 **Portfolio Completo**: [Curriculum Vitae](https://marciogil.github.io/curriculum-vitae/)
-- 💼 **Networking Profissional**: [LinkedIn](https://www.linkedin.com/in/márcio-gil-1b7669309)
-- 📧 **Contato Direto**: [marciopaivagil@gmail.com](mailto:marciopaivagil@gmail.com)
-- 💻 **Projetos Open Source**: [GitHub](https://github.com/MarcioGil)
+- 📧 **Email direto**: [Clique para mandar mensagem](mailto:marciopaivagil@gmail.com?subject=Olá%20sobre%20o%20Decifra.Cidadão)
+- 🌐 **Meu site pessoal**: [Ver currículo completo](https://marciogil.github.io/curriculum-vitae/)
+- 💼 **LinkedIn profissional**: [Conectar no LinkedIn](https://www.linkedin.com/in/márcio-gil-1b7669309)
+- � **Outros projetos**: [GitHub pessoal](https://github.com/MarcioGil)
 
 ---
 

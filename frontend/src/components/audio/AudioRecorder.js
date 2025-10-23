@@ -214,20 +214,41 @@ const AudioRecorder = ({ onSubmit, isLoading }) => {
             <p className="text-sm text-blue-800 leading-relaxed">
               {!mediaBlobUrl && status !== 'recording' && (
                 <>
-                  <span className="font-medium">🎤 Dica:</span> Fale claramente sobre seu documento ou dúvida. 
-                  A Clara vai entender e explicar tudo em linguagem simples!
+                  <span className="font-medium">🎤 Gravação de Voz - Totalmente Acessível:</span>
+                  <br />
+                  • Fale claramente sobre seu documento ou dúvida
+                  <br />
+                  • A Clara vai entender e explicar tudo em linguagem simples
+                  <br />
+                  • Você pode ouvir a resposta em áudio de alta qualidade
+                  <br />
+                  • Use fones de ouvido para melhor qualidade
                 </>
               )}
               {status === 'recording' && (
                 <>
-                  <span className="font-medium">🔴 Gravando:</span> Fale normalmente. 
-                  Clique no botão para parar quando terminar.
+                  <span className="font-medium">🔴 Gravando - Fale Agora:</span>
+                  <br />
+                  • Fale normalmente, sem pressa
+                  <br />
+                  • Explique qual documento você tem
+                  <br />
+                  • Conte qual é sua dúvida específica
+                  <br />
+                  • Clique no botão para parar quando terminar
                 </>
               )}
               {mediaBlobUrl && (
                 <>
-                  <span className="font-medium">✅ Pronto:</span> Ouça sua gravação e envie para a Clara processar, 
-                  ou grave novamente se quiser.
+                  <span className="font-medium">✅ Gravação Pronta:</span>
+                  <br />
+                  • Clique em "Reproduzir" para ouvir sua gravação
+                  <br />
+                  • Se está boa, clique em "Enviar para Clara"
+                  <br />
+                  • Se quer gravar de novo, clique no ícone da lixeira
+                  <br />
+                  • A Clara responderá em texto E áudio
                 </>
               )}
             </p>

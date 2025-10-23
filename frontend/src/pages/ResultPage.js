@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Download, Volume2, Copy, CheckCircle } from 'lucide-react';
+import { ArrowLeft, Download, Volume2, VolumeX, Copy, CheckCircle } from 'lucide-react';
 import { useAccessibility } from '../contexts/AccessibilityContext';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
@@ -21,28 +21,83 @@ const ResultPage = () => {
   }
 
   const handlePlayAudio = async () => {
+    // Priorizar áudio gerado pelo servidor (Google TTS)
     if (result.audioUrl) {
-      setIsPlaying(true);
-      const audio = new Audio(result.audioUrl);
-      audio.onended = () => setIsPlaying(false);
-      audio.onerror = () => {
-        setIsPlaying(false);
-        toast.error('Erro ao reproduzir áudio');
-      };
-      await audio.play();
-    } else {
-      // Usar Web Speech API se não houver URL de áudio
-      if ('speechSynthesis' in window) {
+      try {
         setIsPlaying(true);
+        const audio = new Audio(result.audioUrl);
+        
+        audio.onended = () => setIsPlaying(false);
+        audio.onerror = () => {
+          setIsPlaying(false);
+          console.warn('Áudio do servidor não disponível, usando Web Speech API');
+          // Fallback para Web Speech API
+          handleWebSpeechFallback();
+        };
+        
+        await audio.play();
+        toast.success('🔊 Reproduzindo explicação em áudio de alta qualidade');
+      } catch (error) {
+        console.warn('Erro no áudio do servidor:', error);
+        setIsPlaying(false);
+        handleWebSpeechFallback();
+      }
+    } else {
+      // Usar Web Speech API diretamente se não houver URL de áudio
+      handleWebSpeechFallback();
+    }
+  };
+
+  const handleWebSpeechFallback = () => {
+    if ('speechSynthesis' in window) {
+      try {
+        setIsPlaying(true);
+        
+        // Parar qualquer fala anterior
+        speechSynthesis.cancel();
+        
         const utterance = new SpeechSynthesisUtterance(result.explanation);
         utterance.lang = 'pt-BR';
-        utterance.rate = 0.9;
+        utterance.rate = 0.85; // Velocidade mais confortável
+        utterance.pitch = 1.0;
+        utterance.volume = 1.0;
+        
         utterance.onend = () => setIsPlaying(false);
+        utterance.onerror = (error) => {
+          setIsPlaying(false);
+          console.error('Erro na síntese de voz:', error);
+          toast.error('Erro ao reproduzir áudio. Tente novamente.');
+        };
+        
         speechSynthesis.speak(utterance);
-      } else {
-        toast.error('Áudio não disponível neste navegador');
+        toast.success('🗣️ Reproduzindo explicação com síntese de voz do navegador');
+        
+      } catch (error) {
+        setIsPlaying(false);
+        console.error('Erro na Web Speech API:', error);
+        toast.error('Seu navegador não suporta reprodução de áudio automática');
       }
+    } else {
+      toast.error('Funcionalidade de áudio não disponível neste navegador. Recomendamos usar Chrome ou Firefox.');
     }
+  };
+
+  const handleStopAudio = () => {
+    setIsPlaying(false);
+    
+    // Parar Web Speech API
+    if ('speechSynthesis' in window) {
+      speechSynthesis.cancel();
+    }
+    
+    // Parar áudio HTML5 (se houver)
+    const audioElements = document.querySelectorAll('audio');
+    audioElements.forEach(audio => {
+      audio.pause();
+      audio.currentTime = 0;
+    });
+    
+    toast.success('🔇 Reprodução de áudio interrompida');
   };
 
   const handleCopyText = async () => {
@@ -140,15 +195,25 @@ const ResultPage = () => {
 
           {/* Ações */}
           <div className="flex flex-wrap gap-3">
-            <button
-              onClick={handlePlayAudio}
-              disabled={isPlaying}
-              className="btn-primary flex items-center gap-2"
-              aria-label="Ouvir explicação em áudio"
-            >
-              <Volume2 size={20} />
-              {isPlaying ? 'Reproduzindo...' : 'Ouvir Explicação'}
-            </button>
+            {!isPlaying ? (
+              <button
+                onClick={handlePlayAudio}
+                className="btn-primary flex items-center gap-2"
+                aria-label="Ouvir explicação em áudio"
+              >
+                <Volume2 size={20} />
+                Ouvir Explicação
+              </button>
+            ) : (
+              <button
+                onClick={handleStopAudio}
+                className="btn-secondary flex items-center gap-2 bg-red-500 hover:bg-red-600 text-white"
+                aria-label="Parar reprodução de áudio"
+              >
+                <VolumeX size={20} />
+                Parar Áudio
+              </button>
+            )}
 
             <button
               onClick={handleCopyText}
